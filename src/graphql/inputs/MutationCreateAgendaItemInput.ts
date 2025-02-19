@@ -3,7 +3,7 @@ import { agendaItemsTableInsertSchema } from "~/src/drizzle/tables/agendaItems";
 import { builder } from "~/src/graphql/builder";
 import { AgendaItemType } from "~/src/graphql/enums/AgendaItemType";
 
-export const mutationCreateAgendaItemInputSchema = agendaItemsTableInsertSchema
+export const MutationCreateAgendaItemInputSchema = agendaItemsTableInsertSchema
 	.pick({
 		description: true,
 		duration: true,
@@ -53,7 +53,7 @@ export const mutationCreateAgendaItemInputSchema = agendaItemsTableInsertSchema
 	});
 
 export const MutationCreateAgendaItemInput = builder
-	.inputRef<z.infer<typeof mutationCreateAgendaItemInputSchema>>(
+	.inputRef<z.infer<typeof MutationCreateAgendaItemInputSchema>>(
 		"MutationCreateAgendaItemInput",
 	)
 	.implement({
