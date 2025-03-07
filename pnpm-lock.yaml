@@ -1582,16 +1582,8 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
-<<<<<<< HEAD
-  dotsplit.js@1.1.0:
-    resolution: {integrity: sha512-oFVx9VEE+M3yM4oUkaiDa+U2RhOmjXWyXwtfdc5UiHDSZWleE96FS3nx3yXMVuhLJOdI2GMThvaegkwRYPgAFQ==}
-
-  drizzle-kit@0.30.4:
-    resolution: {integrity: sha512-B2oJN5UkvwwNHscPWXDG5KqAixu7AUzZ3qbe++KU9SsQ+cZWR4DXEPYcvWplyFAno0dhRJECNEhNxiDmFaPGyQ==}
-=======
   drizzle-kit@0.30.5:
     resolution: {integrity: sha512-l6dMSE100u7sDaTbLczibrQZjA35jLsHNqIV+jmhNVO3O8jzM6kywMOmV9uOz9ZVSCMPQhAZEFjL/qDPVrqpUA==}
->>>>>>> upstream/develop-postgres
     hasBin: true
 
   drizzle-orm@0.39.3:
