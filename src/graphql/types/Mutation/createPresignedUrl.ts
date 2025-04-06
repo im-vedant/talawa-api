@@ -93,7 +93,7 @@ builder.mutationField("createPresignedUrl", (t) =>
 			try {
 				const presignedUrl: string = await new Promise((resolve, reject) => {
 					ctx.minio.client
-						.presignedPutObject(bucketName, objectName, 60)
+						.presignedPutObject(bucketName, objectName, 6000)
 						.then(resolve)
 						.catch(reject);
 				});

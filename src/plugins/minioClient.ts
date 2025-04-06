@@ -53,7 +53,7 @@ export const minioClient = fastifyPlugin(async (fastify) => {
 			}) {
 				const options = { ...opts, region: opts.region || "us-east-1" };
 				const requestOptions = super.getRequestOptions(options);
-				requestOptions.headers.host = "localhost:9000";
+				requestOptions.headers.host = "192.168.1.41:9000";
 				return requestOptions;
 			}
 		};
@@ -108,7 +108,7 @@ export const minioClient = fastifyPlugin(async (fastify) => {
 		bucketName: "talawa",
 		client,
 		config: {
-			endPoint: fastify.envConfig.API_MINIO_END_POINT,
+			endPoint: "192.168.1.41",
 			port: fastify.envConfig.API_MINIO_PORT,
 		},
 	});
