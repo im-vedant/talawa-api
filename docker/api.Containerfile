@@ -13,8 +13,11 @@ ARG API_UID
 # For the subsequent shell commands makes the shell exit immediately if any command exits with a non zero exit code, makes the shell consider the exit code of the first command amongst the commands connected using the pipe operator `|` that exits with a non zero exit code for it to exit immediately(by default the shell considers the exit code of the last command amongst the commands connected with a pipe operator `|` for it to determine whether the operation was successful), tells the shell that following strings passed to it are commands to be executed and not paths to script files. 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
+
+ENV COREPACK_INTEGRITY_KEYS='{"npm":[{"expires":"2025-01-29T00:00:00.000Z","keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","keytype":"ecdsa-sha2-nistp256","scheme":"ecdsa-sha2-nistp256","key":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE1Olb3zMAFFxXKHiIkQO5cJ3Yhl5i6UPp+IhuteBJbuHcA5UogKo0EWtlWwW6KSaKoTNEYL7JlCQiVnkhBktUgg=="},{"expires":null,"keyid":"SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U","keytype":"ecdsa-sha2-nistp256","scheme":"ecdsa-sha2-nistp256","key":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEY6Ya7W++7aUPzvMTrezH6Ycx3c+HOKYCcNGybJZSCJq/fd7Qa8uuAKtdIkUQtQiEKERhAmE5lMMJhP8OkDOa2g=="}]}'
 # Renames the 'vscode' group to 'talawa'.
 RUN groupmod -n talawa vscode \
+
 # Renames `vscode` user to `talawa`, sets `/home/talawa` as the home directory for `talawa` user, copies and assigns contents of `/home/vscode` to `/home/talawa`.
 && usermod -d /home/talawa -l talawa -m vscode \
 # Changes user id of `talawa` user to `${API_UID}` argument.

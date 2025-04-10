@@ -9,6 +9,7 @@ Post.implement({
 			complexity: envConfig.API_GRAPHQL_SCALAR_RESOLVER_FIELD_COST,
 			description: "Total number of up votes on the post.",
 			resolve: async (parent, _args, ctx) => {
+				
 				const [postVote] = await ctx.drizzleClient
 					.select({
 						count: count(),

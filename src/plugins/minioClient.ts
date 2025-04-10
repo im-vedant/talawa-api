@@ -103,12 +103,14 @@ export const minioClient = fastifyPlugin(async (fastify) => {
 			);
 		}
 	}
+	
 
 	fastify.decorate("minio", {
 		bucketName: "talawa",
 		client,
 		config: {
 			endPoint: "192.168.1.41",
+			
 			port: fastify.envConfig.API_MINIO_PORT,
 		},
 	});

@@ -6,6 +6,7 @@ import {
 	eq,
 	exists,
 	gt,
+	isNotNull,
 	lt,
 	ne,
 	or,
@@ -79,7 +80,7 @@ Post.implement({
 						error,
 						success,
 					} = upVotersArgumentsSchema.safeParse(args);
-
+					console.log("upvoter is callled")
 					if (!success) {
 						throw new TalawaGraphQLError({
 							extensions: {
@@ -93,13 +94,13 @@ Post.implement({
 					}
 
 					const { cursor, isInversed, limit } = parsedArgs;
-
+					console.log(cursor, isInversed, limit);
 					const orderBy = isInversed
 						? [asc(postVotesTable.createdAt), asc(postVotesTable.creatorId)]
 						: [desc(postVotesTable.createdAt), desc(postVotesTable.creatorId)];
 
 					let where: SQL | undefined;
-
+					console.log("called.......",parent.id)
 					if (isInversed) {
 						if (cursor !== undefined) {
 							where = and(
@@ -171,7 +172,18 @@ Post.implement({
 							);
 						}
 					}
-
+					console.log(ctx.drizzleClient.query.postVotesTable.findMany({
+						columns: {
+							createdAt: true,
+							creatorId: true,
+						},
+						limit,
+						orderBy,
+						with: {
+							creator: true,
+						},
+						where,
+					}).toSQL())
 					const postVotes =
 						await ctx.drizzleClient.query.postVotesTable.findMany({
 							columns: {
@@ -185,6 +197,8 @@ Post.implement({
 							},
 							where,
 						});
+
+					console.log("again called", postVotes)
 
 					if (cursor !== undefined && postVotes.length === 0) {
 						throw new TalawaGraphQLError({
