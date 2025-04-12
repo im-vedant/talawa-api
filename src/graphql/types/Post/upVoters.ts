@@ -110,7 +110,7 @@ Post.implement({
 										.from(postVotesTable)
 										.where(
 											and(
-												ne(postVotesTable.creatorId, sql`${null}`),
+												isNotNull(postVotesTable.creatorId),
 												eq(postVotesTable.createdAt, cursor.createdAt),
 												eq(postVotesTable.creatorId, cursor.creatorId),
 												eq(postVotesTable.postId, parent.id),
@@ -118,7 +118,7 @@ Post.implement({
 											),
 										),
 								),
-								ne(postVotesTable.creatorId, sql`${null}`),
+								isNotNull(postVotesTable.creatorId),
 								eq(postVotesTable.postId, parent.id),
 								eq(postVotesTable.type, "up_vote"),
 								or(
@@ -131,7 +131,7 @@ Post.implement({
 							);
 						} else {
 							where = and(
-								ne(postVotesTable.creatorId, sql`${null}`),
+								isNotNull(postVotesTable.creatorId),
 								eq(postVotesTable.postId, parent.id),
 								eq(postVotesTable.type, "up_vote"),
 							);
@@ -145,7 +145,7 @@ Post.implement({
 										.from(postVotesTable)
 										.where(
 											and(
-												ne(postVotesTable.creatorId, sql`${null}`),
+												isNotNull(postVotesTable.creatorId),
 												eq(postVotesTable.createdAt, cursor.createdAt),
 												eq(postVotesTable.creatorId, cursor.creatorId),
 												eq(postVotesTable.postId, parent.id),
@@ -153,7 +153,7 @@ Post.implement({
 											),
 										),
 								),
-								ne(postVotesTable.creatorId, sql`${null}`),
+								isNotNull(postVotesTable.creatorId),
 								eq(postVotesTable.postId, parent.id),
 								eq(postVotesTable.type, "up_vote"),
 								or(
@@ -166,7 +166,7 @@ Post.implement({
 							);
 						} else {
 							where = and(
-								ne(postVotesTable.creatorId, sql`${null}`),
+								isNotNull(postVotesTable.creatorId),
 								eq(postVotesTable.postId, parent.id),
 								eq(postVotesTable.type, "up_vote"),
 							);

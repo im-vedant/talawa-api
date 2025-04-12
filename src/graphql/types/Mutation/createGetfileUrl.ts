@@ -90,7 +90,7 @@ builder.mutationField("createGetfileUrl", (t) =>
 			try {
 				const presignedUrl: string = await new Promise((resolve, reject) => {
 					ctx.minio.client
-						.presignedGetObject(bucketName, objectName, 60)
+						.presignedGetObject(bucketName, objectName, 600)
 						.then(resolve)
 						.catch(reject);
 				});
